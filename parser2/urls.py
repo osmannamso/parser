@@ -20,5 +20,6 @@ from parser4.views import View
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('parse/', View.parse),
-    path('count/', View.count)
+    path('count/', View.count),
+    path('distinct/', View.distinct)
 ]

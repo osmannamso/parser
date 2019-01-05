@@ -22,3 +22,8 @@ class View(View):
         return HttpResponse('sad')
     def count(request, *args, **kwargs):
         return HttpResponse(len(Twogis.objects.all()))
+    def distinct(request, *args, **kwargs):
+        k = ''
+        for name in Twogis.objects.order_by('oid').distinct('oid'):
+            k += str(name.oid) + str(name.name) + str(name.address) + str(name.lat) + str(name.lon) + '<br>'
+        return HttpResponse(str(len(Twogis.objects.order_by('oid').distinct('oid'))) + '<br>' + k)
